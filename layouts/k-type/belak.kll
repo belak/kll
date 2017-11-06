@@ -1,0 +1,103 @@
+# Animation Example Configuration
+
+Name = Belak Tweaks;
+Version = 0.1;
+Author = "HaaTa (Jacob Alexander) 2017";
+KLL = 0.5;
+
+# Modified Date
+Date = 2017-01-22;
+
+
+### Animations ###
+
+# TODO Move to U"CapsLock" when working
+A[caps_lock] <= loop, replace:all;
+A[caps_lock, 1] <= S[0x36](+:50,+:50,+:50);
+A[caps_lock, 2] <= S[0x36](+:50,+:50,+:50);
+A[caps_lock, 3] <= S[0x36](+:50,+:50,+:50);
+A[caps_lock, 4] <= S[0x36](+:50,+:50,+:50);
+A[caps_lock, 5] <= S[0x36](-:20,-:20,-:20);
+A[caps_lock, 6] <= S[0x36](-:20,-:20,-:20);
+A[caps_lock, 7] <= S[0x36](-:20,-:20,-:20);
+A[caps_lock, 5] <= S[0x36](-:20,-:20,-:20);
+A[caps_lock, 6] <= S[0x36](-:20,-:20,-:20);
+A[caps_lock, 8] <= S[0x36](-:20,-:20,-:20);
+A[caps_lock, 9] <= S[0x36](-:20,-:20,-:20);
+A[caps_lock, 10] <= S[0x36](-:20,-:20,-:20);
+A[caps_lock, 11] <= S[0x36](-:20,-:20,-:20);
+A[caps_lock, 12] <= S[0x36](-:20,-:20,-:20);
+
+# TODO Move to U"ScrollLock" when working
+A[scroll_lock] <= loop, replace:all;
+A[scroll_lock, 1] <= S[0xF](+:50,+:50,+:50);
+A[scroll_lock, 2] <= S[0xF](+:50,+:50,+:50);
+A[scroll_lock, 3] <= S[0xF](+:50,+:50,+:50);
+A[scroll_lock, 4] <= S[0xF](+:50,+:50,+:50);
+A[scroll_lock, 5] <= S[0xF](-:20,-:20,-:20);
+A[scroll_lock, 6] <= S[0xF](-:20,-:20,-:20);
+A[scroll_lock, 7] <= S[0xF](-:20,-:20,-:20);
+A[scroll_lock, 5] <= S[0xF](-:20,-:20,-:20);
+A[scroll_lock, 6] <= S[0xF](-:20,-:20,-:20);
+A[scroll_lock, 8] <= S[0xF](-:20,-:20,-:20);
+A[scroll_lock, 9] <= S[0xF](-:20,-:20,-:20);
+A[scroll_lock, 10] <= S[0xF](-:20,-:20,-:20);
+A[scroll_lock, 11] <= S[0xF](-:20,-:20,-:20);
+A[scroll_lock, 12] <= S[0xF](-:20,-:20,-:20);
+
+# All clear
+A[clear] <= loops:1, pfunc:interp;
+A[clear, 1] <= P[c:0%](0,0,0), P[c:100%](0,0,0);
+
+A[white_33] <= loops:1, pfunc:interp;
+A[white_33, 1] <= P[c:0%](85,85,85), P[c:100%](85,85,85);
+
+A[white_66] <= loops:1, pfunc:interp;
+A[white_66, 1] <= P[c:0%](170,170,170), P[c:100%](170,170,170);
+
+# Full-brightness white
+A[white_100] <= loops:1, pfunc:interp;
+A[white_100, 1] <= P[c:0%](255,255,255), P[c:100%](255,255,255);
+
+# Massdrop blue to pink (miami)
+A[miami] <= start, loops:1, pfunc:interp;
+A[miami, 1] <= P[c:0%](0,0xAE,0xDA), P[c:100%](0xFF,0x14,0x93); # FF1493
+
+# Rainbow, static interpolation test
+A[rainbow] <= loops:1, pfunc:interp;
+A[rainbow, 1] <=
+	P[c:0%](255,0,0),
+	P[c:25%](255,255,0),
+	P[c:50%](0,255,0),
+	P[c:75%](0,0,255),
+	P[c:100%](127,0,255);
+
+A[ks_1976] <= loops:1, pfunc:interp;
+A[ks_1976, 1] <=
+	P[c:0%](93,206,186),
+	P[c:20%](216,55,18),
+	P[c:30%](255,104,0),
+	P[c:40%](225,186,68),
+	P[c:50%](91,51,20),
+	P[c:100%](127,127,127);
+
+A[hawaii] <= loops:1, pfunc:interp;
+A[hawaii, 1] <=
+	P[r:1](91,51,20),
+	P[r:2](216,55,18),
+	P[r:4](255,104,0),
+	P[r:5](93,206,186),
+	P[r:6](93,206,186);
+
+U"F5" +: A[clear](start);
+U"F6" +: A[white_33](start);
+U"F7" +: A[white_66](start);
+U"F8" +: A[white_100](start);
+
+U"F9"  +: A[ks_1976](start);
+U"F10" +: A[hawaii](start);
+U"F11" +: A[miami](start);
+U"F12" +: A[rainbow](start);
+
+U"Esc" + U"F1" : flashMode();
+
